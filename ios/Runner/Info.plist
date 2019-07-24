@@ -42,8 +42,8 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<true/>
+  <string>Can I use the photo library please?</string>
 	<key>NSCameraUsageDescription</key>
-	<true/>
+  <string>Can I use the camera please?</string>
 </dict>
 </plist>
