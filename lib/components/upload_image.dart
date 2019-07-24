@@ -37,11 +37,15 @@ class _UploadImageState extends State<UploadImage> {
           FloatingActionButton(
             onPressed: () { getImage('camera'); },
             tooltip: 'Pick image',
+            // important: when there are multiple fab, each of them should have a heroTag,
+            // otherwise an error will be thrown
+            heroTag: 'camera',
             child: Icon(Icons.add_a_photo),
           ),
           FloatingActionButton(
             onPressed: () { getImage('gallery'); },
             tooltip: 'Pick image',
+            heroTag: 'gallery',
             child: Icon(Icons.photo_album),
           ),
         ],
