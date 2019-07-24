@@ -11,7 +11,7 @@ class Draw extends StatelessWidget {
           children: <Widget>[
             ListTile(
               title: Center(
-                child: Text('设置')
+                child: Text('设置GitHub图床')
               ),
               onTap: () { Navigator.pushNamed(ctx, '/setting'); },
             ),
