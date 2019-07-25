@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'package:oktoast/oktoast.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -52,7 +53,7 @@ class _SettingsState extends State<SettingsPage> {
       );
       prefs.setString('github_settings', jsonEncode(githubSetting));
     } else {
-      print('有错误');
+      showToast('请检查输入信息');
     }
   }
 
