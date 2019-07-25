@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:oktoast/oktoast.dart';
+import '../util/GithubSetting.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -26,7 +27,7 @@ class _SettingsState extends State<SettingsPage> {
 
   void _initPrefs () async {
     prefs = await SharedPreferences.getInstance();
-    var settingFromSharedPreferences = prefs.getString('github_setting');
+    var settingFromSharedPreferences = prefs.getString('github_settings');
     if (settingFromSharedPreferences != null && settingFromSharedPreferences.length > 0) {
       GithubSetting setting = new GithubSetting.fromJson(jsonDecode(settingFromSharedPreferences));
       if (setting.repo != '') {
@@ -52,6 +53,7 @@ class _SettingsState extends State<SettingsPage> {
         _customUrlController.text
       );
       prefs.setString('github_settings', jsonEncode(githubSetting));
+      showToast('msg保存成功');
     } else {
       showToast('请检查输入信息');
     }
@@ -145,43 +147,6 @@ class _SettingsState extends State<SettingsPage> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class GithubSetting {
-  String repo;
-  String branch;
-  String token;
-  String path;
-  String customUrl;
-
-  // GithubSetting (String repo, String branch, String token, String path, String customUrl) {
-  //   this.repo = repo;
-  //   this.branch = branch;
-  //   this.token = token;
-  //   this.path = path;
-  //   this.customUrl = customUrl;
-  // }
-  GithubSetting (this.repo, this.branch, this.token, this.path, this.customUrl);
-
-  Map toJson () {
-    Map map = new Map();
-    map['repo'] = this.repo;
-    map['branch'] = this.branch;
-    map['token'] = this.token;
-    map['path'] = this.path;
-    map['customUrl'] = this.customUrl;
-    return map;
-  }
-
-  factory GithubSetting.fromJson (Map<String, dynamic> settingJson) {
-    return GithubSetting(
-      settingJson['repo'],
-      settingJson['branch'],
-      settingJson['token'],
-      settingJson['path'],
-      settingJson['customUrl'],
     );
   }
 }
