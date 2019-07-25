@@ -4,7 +4,7 @@ PicGo written in flutter running on iOS & Android.
 
 # Feature
 
-- [√] GibHub图床
+- [x] GibHub图床
 - [ ] 阿里云OSS
 - [ ] 腾讯云COS
 - [ ] 微博图床
